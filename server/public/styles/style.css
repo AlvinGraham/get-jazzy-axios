@@ -2,3 +2,17 @@ table {
   border-bottom: 1px solid darkgrey;
   margin-bottom: 10px;
 }
+/* * {
+  border: 1px solid red ;
+} */
+
+td, th {
+  
+  margin-right: 40px;
+  text-align: left;
+
+}
+
+table {
+  width: 50%;
+}

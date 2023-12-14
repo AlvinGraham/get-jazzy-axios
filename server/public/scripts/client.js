@@ -84,6 +84,8 @@ function addArtistBtn(event) {
             //clear DOM
             tableBodyEle = document.getElementById('artistTableBody');
             tableBodyEle.innerHTML = '';
+            const songTableEle = document.getElementById('songTableBody');
+            songTableEle.innerHTML = '';
 
             // render to DOM
 
@@ -125,6 +127,8 @@ function addSongBtn(event) {
 
         const songTableEle = document.getElementById('songTableBody');
         songTableEle.innerHTML = '';
+        tableBodyEle = document.getElementById('artistTableBody');
+        tableBodyEle.innerHTML = '';
 
         //render DOM
         onReady();
