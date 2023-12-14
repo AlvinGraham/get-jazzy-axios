@@ -48,6 +48,27 @@ function onReady() {
             console.log('There is an error in GET songs client');
         });
 
+    // TODO Add Axios request for /album and display on DOM
+    axios({
+        method: 'GET',
+        url: '/album'
+    })
+        .then (function (response) {
+            console.log(response);
+
+            let albumsFromServer = response.data;
+            let albumsTableEle = document.querySelector('#albumTableBody');
+            for (let album of albumsFromServer) {
+                albumsTableEle.innerHTML += `
+                <tr>
+                    <td>${album.title}</td>
+                    <td>${album.year}</td>
+                <tr>`;
+            }
+        }).catch(function (error) {
+            console.log('There is an error in GET album route client', error);
+        });
+
 
 }
 
@@ -86,6 +107,8 @@ function addArtistBtn(event) {
             tableBodyEle.innerHTML = '';
             const songTableEle = document.getElementById('songTableBody');
             songTableEle.innerHTML = '';
+            const albumTableEle = document.getElementById('albumTableBody');
+            albumTableEle.innerHTML = '';
 
             // render to DOM
 
@@ -129,6 +152,8 @@ function addSongBtn(event) {
         songTableEle.innerHTML = '';
         tableBodyEle = document.getElementById('artistTableBody');
         tableBodyEle.innerHTML = '';
+        const albumTableEle = document.getElementById('albumTableBody');
+        albumTableEle.innerHTML = '';
 
         //render DOM
         onReady();
@@ -139,5 +164,47 @@ function addSongBtn(event) {
     });
 
     console.log('New Song:', newSong);
+
+}
+
+function addAlbumBtn(event){
+    event.preventDefault();
+    console.log('addAlbumBtn');
+
+    // generate POST data obj
+    const addTitleEle = document.getElementById('albumTitleInput');
+    const addYearEle = document.getElementById('albumYearInput');
+    const newAlbum = {
+        title: addTitleEle.value,
+        year: addYearEle.value
+    };
+
+    axios({
+        method: 'POST',
+        url: '/album',
+        data: newAlbum
+    })
+    .then((response) => {
+        console.log('POST new Album');
+
+        //clear DOM
+        addTitleEle.value = null;
+        addYearEle.value = null;
+
+        const albumTableEle = document.getElementById('albumTableBody');
+        albumTableEle.innerHTML = '';
+        const songTableEle = document.getElementById('songTableBody');
+        songTableEle.innerHTML = '';
+        tableBodyEle = document.getElementById('artistTableBody');
+        tableBodyEle.innerHTML = '';
+
+        // render DOM
+        onReady();
+    })
+    .catch((err) => {
+        console.error('Error in add album POST', err);
+    });
+
+
 
 }

@@ -16,3 +16,7 @@ td, th {
 table {
   width: 50%;
 }
+
+form {
+  padding-bottom: 10px;
+}

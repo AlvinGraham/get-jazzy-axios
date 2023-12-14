@@ -12,14 +12,15 @@
 <body>
     <h1>Get Jazzy</h1>
 
-    <form id="addArtistForm" onsubmit="addArtistBtn(event)">
-        Name: <input id="artistNameInput" required type="text">
-        Born: <input id="artistBornInput" required type="text">
-        Died: <input id="artistDiedInput" required type="text">
-        <button type="submit">Add Artist</button>
-    </form>
+
 
     <h2>Famous Jazz Artists</h2>
+    <form id="addArtistForm" onsubmit="addArtistBtn(event)">
+      Name: <input id="artistNameInput" required type="text">
+      Born: <input id="artistBornInput" required type="text">
+      Died: <input id="artistDiedInput" required type="text">
+      <button type="submit">Add Artist</button>
+    </form>
     <table>
         <thead>
             <tr>
@@ -31,13 +32,14 @@
         <tbody id="artistTableBody"></tbody>
     </table>
 
-    <form id="addSongForm" onsubmit="addSongBtn(event)">
-        Song: <input id="songTitleInput" required type="text">
-        Artist: <input id="songArtistInput" required type="text">
-        <button type="submit">Add Song</button>
-    </form>
+
 
     <h2>Famous Jazz Songs</h2>
+    <form id="addSongForm" onsubmit="addSongBtn(event)">
+      Song: <input id="songTitleInput" required type="text">
+      Artist: <input id="songArtistInput" required type="text">
+      <button type="submit">Add Song</button>
+    </form>
     <table>
         <thead>
             <tr>
@@ -46,6 +48,22 @@
             </tr>
         </thead>
         <tbody id="songTableBody"></tbody>
+    </table>
+
+    <h2>Famous Random Albums</h2>
+    <form id="addAlbumForm" onsubmit="addAlbumBtn(event)">
+      Song: <input id="albumTitleInput" required type="text">
+      Artist: <input id="albumYearInput" required type="text">
+      <button type="submit">Add Album</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody id="albumTableBody"></tbody>
     </table>
 </body>
 </html>
