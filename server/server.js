@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 const PORT = 5001;
+app.use(express.json());
 
 const artistListArray = [
     {
@@ -23,7 +24,7 @@ const artistListArray = [
         name: 'Louis Daniel Armstrong',
         born: 1901,
         died: 1971,
-    },
+    }
 ];
 
 const songListArray = [
@@ -52,6 +53,19 @@ app.get('/artist', (req, res) => {
 });
 
 // TODO - Add GET for songs
+app.get('/song', (req, res) => {
+    res.send(songListArray);
+});
+
+// POST routes
+app.post('/artist', (req, res) => {
+    const newArtist = req.body;
+    console.log('req', req.body);
+    console.log('newArtist', newArtist);
+    artistListArray.push(newArtist);
+    res.sendStatus(201);
+    return;
+})
 
 app.listen(PORT, () => {
     console.log('listening on port', PORT)
