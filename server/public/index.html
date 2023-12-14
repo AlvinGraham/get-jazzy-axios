@@ -7,6 +7,7 @@
     <title>Get Jazzy</title>
     <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script defer src="scripts/client.js"></script>
+    <link href="./styles/style.css" rel="stylesheet">
 </head>
 <body>
     <h1>Get Jazzy</h1>
@@ -29,6 +30,12 @@
         </thead>
         <tbody id="artistTableBody"></tbody>
     </table>
+
+    <form id="addSongForm" onsubmit="addSongBtn(event)">
+        Song: <input id="songTitleInput" required type="text">
+        Artist: <input id="songArtistInput" required type="text">
+        <button type="submit">Add Song</button>
+    </form>
 
     <h2>Famous Jazz Songs</h2>
     <table>

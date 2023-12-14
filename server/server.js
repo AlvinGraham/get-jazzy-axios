@@ -67,6 +67,16 @@ app.post('/artist', (req, res) => {
     return;
 })
 
+// POST routes
+app.post('/song', (req, res) => {
+    const newSong = req.body;
+    // console.log('req', req.body);
+    console.log('newSong', newSong);
+    songListArray.push(newSong);
+    res.sendStatus(201);
+    return;
+})
+
 app.listen(PORT, () => {
     console.log('listening on port', PORT)
 });

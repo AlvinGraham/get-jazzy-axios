@@ -97,3 +97,43 @@ function addArtistBtn(event) {
     
 
 }
+
+function addSongBtn(event) {
+    event.preventDefault();
+    console.log('addSongBtn function');
+
+    // generate post data object
+    const addTitleEle = document.getElementById('songTitleInput');
+    const addArtistEle = document.getElementById('songArtistInput');
+    
+    const newSong = {
+        title: addTitleEle.value,
+        artist: addArtistEle.value
+    };
+
+    axios({
+        method: 'POST',
+        url: '/song',
+        data: newSong
+    })
+    .then((response) => {
+        console.log('POST new songs');
+
+        //clear DOM
+        addTitleEle.value = null;
+        addArtistEle.value = null;
+
+        const songTableEle = document.getElementById('songTableBody');
+        songTableEle.innerHTML = '';
+
+        //render DOM
+        onReady();
+
+    })
+    .catch((err) => {
+        console.error('Error in addSong POST', err);
+    });
+
+    console.log('New Song:', newSong);
+
+}
